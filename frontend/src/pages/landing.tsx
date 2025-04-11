@@ -8,7 +8,7 @@ import {
   Users,
   BookOpen,
   Layout,
-  MessageSquare
+  MessageSquare,
 } from "lucide-react";
 import ContactSection from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -92,9 +92,12 @@ function Landing() {
 
   const Logo = () => (
     <div className="flex items-center space-x-2">
-      <div className="relative w-8 h-8">
-        <div className="absolute inset-0 bg-teal-800 rounded-lg transform rotate-45"></div>
-        <div className="absolute inset-0 border-t-2 border-orange-400 rounded-lg transform rotate-45 translate-y-1"></div>
+      <div className="relative w-16 h-16 rounded-full overflow-clip">
+        <img
+          src="/skill-bridge-logo.jpeg"
+          alt="SkillBridge Logo"
+          className="w-16 h-16 object-contain"
+        />
       </div>
       <span className="text-xl font-bold">SkillBridge</span>
     </div>
@@ -107,7 +110,7 @@ function Landing() {
       }`}
     >
       {/* Improved Navbar */}
-      <nav className="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-all duration-300">
+      <nav className="fixed w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-all duration-300 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
