@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 const DashboardLayout = () => {
   return (
     <div>
-        DashboardLayout
-        <Button variant='link'>Hello</Button>
+      DashboardLayout
+      <Button variant="link">Hello</Button>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardLayout
+export default DashboardLayout;

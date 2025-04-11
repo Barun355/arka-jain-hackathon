@@ -13,7 +13,7 @@ export default defineConfig({
   },
   server: {
     host: true, // listens on all addresses
-    port: 4173,
+    port: 5173,
   },
   preview: {
     host: true,
