@@ -37,8 +37,6 @@ package-lock.json
 yarn.lock
 
 # TypeScript files
-*.js
-!eslint.config.js
 
 # Vite/Vue specific
 .cache/
