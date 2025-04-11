@@ -119,44 +119,191 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
   @keyframes float-medium {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
   }
   @keyframes float-slow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
   @keyframes dash {
-    to { stroke-dashoffset: -24; }
+    to {
+      stroke-dashoffset: -24;
+    }
   }
   @keyframes dash-slow {
-    to { stroke-dashoffset: -12; }
+    to {
+      stroke-dashoffset: -12;
+    }
   }
   @keyframes pulse-slow {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 0.5; }
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 0.5;
+    }
   }
   @keyframes slide-in-right {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
-  
-  .animate-float { animation: float 6s ease-in-out infinite; }
-  .animate-float-medium { animation: float-medium 8s ease-in-out infinite; }
-  .animate-float-slow { animation: float-slow 10s ease-in-out infinite; }
-  .animate-dash { animation: dash 15s linear infinite; }
-  .animate-dash-slow { animation: dash-slow 20s linear infinite; }
-  .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
-  .animate-slide-in-right { animation: slide-in-right 0.3s forwards; }
-  
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-medium {
+    animation: float-medium 8s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+  .animate-dash {
+    animation: dash 15s linear infinite;
+  }
+  .animate-dash-slow {
+    animation: dash-slow 20s linear infinite;
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s forwards;
+  }
+
   .bg-grid-pattern {
-    background-image: 
-      linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    background-image: linear-gradient(
+        to right,
+        rgba(99, 102, 241, 0.1) 1px,
+        transparent 1px
+      ),
       linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+
+  .role-selection {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .role-options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .role-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 250px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #3498db;
+  }
+
+  .role-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* File: styles/StepForms.css */
+  .step-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .form-section {
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="url"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .form-group select[multiple] {
+    height: 150px;
+  }
+
+  .radio-group,
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .radio-group label,
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  .radio-group input,
+  .checkbox-group input {
+    margin-right: 0.5rem;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
   }
 }

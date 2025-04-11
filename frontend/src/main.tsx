@@ -51,9 +51,9 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: '/onboarding',
+    path: "/onboarding",
     element: <Onboarding />,
-  }
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
