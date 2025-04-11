@@ -12,10 +12,14 @@ import {
 } from "lucide-react";
 import ContactSection from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 function Landing() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -150,9 +154,16 @@ function Landing() {
                   <Moon className="h-5 w-5 text-indigo-600" />
                 )}
               </button>
-              <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-lg hover:shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300">
-                Get Started
-              </button>
+              <div className="flex items-center justify-center space-x-4">
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+                <SignedOut>
+                  <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-lg hover:shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300" onClick={() => navigate('/sign-in')}>
+                    Get Started
+                  </button>
+                </SignedOut>
+              </div>
             </div>
 
             {/* Mobile Navigation Button */}
