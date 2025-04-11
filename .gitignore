@@ -1,0 +1,45 @@
+# Dependency directories
+node_modules/
+
+# Build files
+dist/
+build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Log files
+*.log
+logs/
+
+# Editor files and directories
+*.swp
+*.swo
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Project files
+package-lock.json
+yarn.lock
+
+# TypeScript files
+*.js
+!eslint.config.js
+
+# Vite/Vue specific
+.cache/
+.temp/
