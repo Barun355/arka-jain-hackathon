@@ -8,12 +8,10 @@ import {
   Users,
   BookOpen,
   Layout,
-  MessageSquare,
-  MapPin,
-  Phone,
-  Mail,
+  MessageSquare
 } from "lucide-react";
 import ContactSection from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 function Landing() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -928,106 +926,7 @@ function Landing() {
       <ContactSection />
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <a href="#hero" className="inline-block">
-                <Logo />
-              </a>
-              <p className="text-gray-400">bridge your skills</p>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2 text-gray-400">
-                  <MapPin className="h-5 w-5" />
-                  <span>123 Tech Street, Innovation City</span>
-                </div>
-                <div className="flex items-center space-x-2 text-gray-400">
-                  <Phone className="h-5 w-5" />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center space-x-2 text-gray-400">
-                  <Mail className="h-5 w-5" />
-                  <span>contact@skillbridge.com</span>
-                </div>
-              </div>
-            </div>
-            <div className="md:col-span-1">
-              <h3 className="text-lg font-semibold mb-4">Platform</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#features"
-                    className="text-gray-400 hover:text-white"
-                  >
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#mentors" className="text-gray-400 hover:text-white">
-                    Mentors
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Sessions
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="md:col-span-1">
-              <h3 className="text-lg font-semibold mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="md:col-span-1">
-              <h3 className="text-lg font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Privacy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Terms
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-white">
-                    Cookie Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-700">
-            <p className="text-center text-gray-400">
-              Created and maintained by{" "}
-              <a
-                href="https://codefirst.com"
-                className="text-blue-400 hover:text-blue-300"
-              >
-                CodeFirst
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
