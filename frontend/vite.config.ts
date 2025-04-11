@@ -11,4 +11,17 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    host: true, // listens on all addresses
+    port: 4173,
+  },
+  preview: {
+    host: true,
+    port: 4173,
+    allowedHosts: [
+      "hindswood.com",
+      "www.hindswood.com",
+      // Add any other domains or subdomains you need
+    ],
+  },
 });
