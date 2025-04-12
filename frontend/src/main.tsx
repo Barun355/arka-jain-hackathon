@@ -13,6 +13,12 @@ import Onboarding from "./pages/onboarding";
 import { ProtectedRoute } from "./components/dashboard/ProtectedRoute";
 import { Toaster } from "sonner";
 import AccountNotApproved from "./pages/dashboards/AccountNotApproved";
+import MentorSessionPage from "./components/dashboard/mentors/MentorSessionPage";
+import MentorCollabPage from "./components/dashboard/mentors/MentorCollabPage";
+import MenteeManagementPage from "./components/dashboard/mentors/MenteeManagmentPage";
+import ProjectShowcasePage from "./components/dashboard/mentee/ProjectShowcasePage";
+import MenteeCollabPage from "./components/dashboard/mentee/CollaborationPage";
+import MentorDiscoveryPage from "./components/dashboard/mentee/MentorDiscoveryPage";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -41,6 +47,30 @@ const router = createBrowserRouter([
       {
         path: "mentee",
         element: <Mentee />,
+      },
+      {
+        path: 'sessions',
+        element: <MentorSessionPage />
+      },
+      {
+        path: "collab",
+        element: <MentorCollabPage />
+      },
+      {
+        path: "find-mentees",
+        element: <MenteeManagementPage />
+      },
+      {
+        path: "showcase",
+        element: <ProjectShowcasePage />
+      },
+      {
+        path: "collaborations",
+        element: <MenteeCollabPage />
+      },
+      {
+        path: "find-mentors",
+        element: <MentorDiscoveryPage />
       }
     ],
   },

@@ -5,7 +5,6 @@ import {
   Home,
   Users,
   Calendar,
-  Settings,
   Bell,
   Search,
   ChevronDown,
@@ -35,12 +34,7 @@ const DashboardLayout: React.FC = () => {
       name: "Dashboard",
       icon: <Home className="w-5 h-5" />,
       href: `/dashboard/${role}`,
-    },
-    {
-      name: "Settings",
-      icon: <Settings className="w-5 h-5" />,
-      href: "/dashboard/settings",
-    },
+    }
   ];
 
   // Role-specific menu items
@@ -48,17 +42,17 @@ const DashboardLayout: React.FC = () => {
     {
       name: "Create Sessions",
       icon: <Calendar className="w-5 h-5" />,
-      href: "/sessions/create",
+      href: "/dashboard/sessions",
     },
     {
       name: "Create Collab",
       icon: <PenTool className="w-5 h-5" />,
-      href: "/collab/create",
+      href: "/dashboard/collab",
     },
     {
       name: "Find Mentees",
       icon: <UserPlus className="w-5 h-5" />,
-      href: "/find-mentees",
+      href: "/dashboard/find-mentees",
     },
   ];
 
@@ -66,7 +60,7 @@ const DashboardLayout: React.FC = () => {
     {
       name: "Search Peers",
       icon: <Search className="w-5 h-5" />,
-      href: "/search-peers",
+      href: "/dashboard/search-peers",
     },
     {
       name: "Project Showcase",
@@ -76,17 +70,17 @@ const DashboardLayout: React.FC = () => {
     {
       name: "Collaborations",
       icon: <BookMarked className="w-5 h-5" />,
-      href: "/collaborations",
+      href: "/dashboard/collaborations",
     },
     {
       name: "Find Mentors",
       icon: <Users className="w-5 h-5" />,
-      href: "/find-mentors",
+      href: "/dashboard/find-mentors",
     },
     {
       name: "Sessions",
       icon: <Calendar className="w-5 h-5" />,
-      href: "/sessions",
+      href: "/dashboard/sessions",
     },
   ];
 
@@ -169,7 +163,7 @@ const DashboardLayout: React.FC = () => {
       {/* Mobile Sidebar overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
+          className="fixed inset-0 z-40 bg-black/20 bg-opacity-50 md:hidden"
           onClick={closeMobileMenu}
         />
       )}
