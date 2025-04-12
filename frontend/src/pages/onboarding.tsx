@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CheckCircle,
   User,
@@ -8,6 +8,11 @@ import {
   Phone,
   BookOpen,
 } from "lucide-react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import axios from "axios";
+import { BASE_BACKEND_URL } from "@/utils/constant";
+import { useAuth, useUser } from "@clerk/clerk-react";
+import { toast } from "sonner";
 
 const UserRegistrationForm = () => {
   const [selectedRole, setSelectedRole] = useState<string | null>("mentor");
@@ -26,6 +31,15 @@ const UserRegistrationForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [searchParams] = useSearchParams();
+  const onBoardingRole = searchParams.get("onBoardingRole");
+
+  const { getToken, userId } = useAuth();
+  const { user } = useUser()
+
+
+  const navigate = useNavigate()
+
   const handleRoleSelect = (role: any) => {
     setSelectedRole(role);
   };
@@ -42,6 +56,8 @@ const UserRegistrationForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const token = await getToken();
+
     try {
       // Add your API submission logic here
       const dataToSubmit = {
@@ -51,30 +67,72 @@ const UserRegistrationForm = () => {
 
       console.log("Submitting data:", dataToSubmit);
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      try {
+        // Simulate API call
+        const res = await axios.post(
+          BASE_BACKEND_URL + "/onboarding",
+          {
+            ...dataToSubmit,
+            userId
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-      // Success handling
-      alert(`Successfully registered as a ${selectedRole}!`);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        expertise: "",
-        experience: "",
-        availability: "",
-        interests: "",
-        goals: "",
-        preferredSchedule: "",
-      });
-      setSelectedRole(null);
+        if (res.data.error) {
+          toast.error("Onboarding failed");
+          return;
+        }
+        if (res.data.data) {
+          // Success handling
+          toast.success(`Successfully registered as a ${selectedRole}!`);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            expertise: "",
+            experience: "",
+            availability: "",
+            interests: "",
+            goals: "",
+            preferredSchedule: "",
+          });
+          setSelectedRole(null);
+          console.log(dataToSubmit.role)
+          navigate(`/dashboard/${dataToSubmit.role}`)
+        }
+
+      } catch (error) {
+        console.log(error);
+        return toast.error("Server Side error");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Failed to submit form. Please try again.");
+      toast.error("Failed to submit form. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    if (!user) return;
+
+    setFormData((prev) => ({
+        ...prev,
+        email: user.emailAddresses.toString() || '',
+        name: user.fullName || '',
+        phone: user.phoneNumbers.toString() || ''
+    }) )
+  }, [user])
+
+  useEffect(() => {
+    if (onBoardingRole) {
+      handleRoleSelect(onBoardingRole);
+    }
+  }, [onBoardingRole]);
 
   return (
     <div className="flex justify-center items-center h-screen w-full">

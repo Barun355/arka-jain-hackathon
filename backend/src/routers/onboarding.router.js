@@ -1,9 +1,14 @@
-import { Router } from "express";
+// src/routes/onboardingRoutes.js
+import express from 'express';
+import { onboardUser } from '../controller/onboarding.controller.js';
 
+const router = express.Router();
 
-const router = Router()
+/**
+ * @route POST /api/onboarding
+ * @desc Onboard a user as either mentor or mentee
+ * @access Private
+ */
+router.post('/', onboardUser);
 
-
-router.post('/role', (req, res) => {
-    
-})
+export default router;
