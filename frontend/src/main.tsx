@@ -11,6 +11,8 @@ import SignUp from "./pages/auth/SignUp";
 import { ClerkProvider } from "@clerk/clerk-react";
 import Onboarding from "./pages/onboarding";
 import { ProtectedRoute } from "./components/dashboard/ProtectedRoute";
+import { Toaster } from "sonner";
+import AccountNotApproved from "./pages/dashboards/AccountNotApproved";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: "mentee",
         element: <Mentee />,
-      },
+      }
     ],
   },
   {
@@ -52,8 +54,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/onboarding",
-    element: <Onboarding />,
+    element: (
+      <ProtectedRoute>
+        <Onboarding />
+      </ProtectedRoute>
+    )
   },
+  {
+    path: '/not-approved',
+    element: <AccountNotApproved />
+  }
 ]);
 
 createRoot(document.getElementById("root")!).render(
@@ -73,6 +83,7 @@ createRoot(document.getElementById("root")!).render(
       signUpUrl="/sign-up"
     >
       <RouterProvider router={router} />
+      <Toaster />
     </ClerkProvider>
   </StrictMode>
 );

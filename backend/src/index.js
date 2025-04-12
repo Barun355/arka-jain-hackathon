@@ -5,7 +5,9 @@ import 'dotenv/config'
 import { clerkMiddleware, requireAuth } from '@clerk/express'
 
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT ;
+
+console.log(port)
 const app = express()
 
 
@@ -20,9 +22,9 @@ import onboardingRouter from './routers/onboarding.router.js'
 
 
 app.use(clerkMiddleware())
-app.use('/mentor', requireAuth,  mentorRouter)
-app.use('/mentee', requireAuth,  menteeRouter)
-app.use('/onboarding', requireAuth, onboardingRouter)
+app.use('/api/v1/mentor', requireAuth,  mentorRouter)
+app.use('/api/v1/mentee', requireAuth,  menteeRouter)
+app.use('/api/v1/onboarding', onboardingRouter)
 
 app.listen(port, () => { 
     console.log(`Server is running on port http://localhost:${port}`);

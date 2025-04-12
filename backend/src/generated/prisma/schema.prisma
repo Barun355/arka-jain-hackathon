@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// prisma/schema.prisma
+model User {
+  id              String           @id @default(uuid())
+  name            String
+  email           String           @unique
+  phone           String?
+  role            String // 'mentor' or 'mentee'
+  isOnboarded     Boolean          @default(false)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  mentorProfile   MentorProfile?
+  menteeProfile   MenteeProfile?
+  ProjectShowcase ProjectShowcase?
+}
+
+model MentorProfile {
+  id           String   @id @default(uuid())
+  expertise    String
+  experience   String
+  availability String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String   @unique
+  Collab       Collab[]
+}
+
+model MenteeProfile {
+  id                String        @id @default(uuid())
+  interests         String
+  goals             String
+  preferredSchedule String
+  user              User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String        @unique
+  CollabTasks       CollabTasks[]
+}
+
+model ProjectShowcase {
+  id            String   @id @default(uuid())
+  title         String
+  description   String
+  github_link   String
+  deployed_link String
+  resource_link String[] @default([])
+  images        String[]
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique
+}
+
+model Collab {
+  id          String        @id @default(uuid())
+  mentorId    String
+  title       String
+  description String
+  status      CollabStatus
+  mentor      MentorProfile @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+
+  CollabTasks      CollabTasks[]
+  CollabSubmission CollabSubmission[]
+}
+
+model CollabTasks {
+  id          String       @id @default(uuid())
+  title       String
+  description String
+  collabId    String
+  menteeId    String
+  status      CollabStatus
+
+  collab Collab        @relation(fields: [collabId], references: [id], onDelete: Cascade)
+  mentee MenteeProfile @relation(fields: [menteeId], references: [id], onDelete: Cascade)
+}
+
+model CollabSubmission {
+  id            String   @id @default(uuid())
+  collabId      String
+  github_link   String
+  resource_link String[]
+
+  collab Collab @relation(fields: [collabId], references: [id], onDelete: Cascade)
+}
+
+enum CollabStatus {
+  created
+  inprogress
+  completed
+  failed
+}

@@ -6,6 +6,7 @@ declare global {
     metadata: {
       onboardingComplete?: boolean,
       role?: "mentor" | "mentee" | "admin",
+      approved?: boolean
     }
   }
 }
