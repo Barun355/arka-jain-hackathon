@@ -19,6 +19,7 @@ import MenteeManagementPage from "./components/dashboard/mentors/MenteeManagment
 import ProjectShowcasePage from "./components/dashboard/mentee/ProjectShowcasePage";
 import MenteeCollabPage from "./components/dashboard/mentee/CollaborationPage";
 import MentorDiscoveryPage from "./components/dashboard/mentee/MentorDiscoveryPage";
+import PeerManagementPage from "./components/dashboard/mentee/PeerManagementPage";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "find-mentors",
         element: <MentorDiscoveryPage />
+      },
+      {
+        path: 'search-peers',
+        element: <PeerManagementPage />
       }
     ],
   },
